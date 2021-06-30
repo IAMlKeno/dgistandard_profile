@@ -1,0 +1,55 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.title.field_title
+    - field.field.paragraph.title.field_title_type
+    - paragraphs.paragraphs_type.title
+  module:
+    - field_group
+    - options
+third_party_settings:
+  field_group:
+    group_titles:
+      children:
+        - field_title
+        - field_title_type
+      parent_name: ''
+      weight: 20
+      format_type: field_group_table
+      region: content
+      format_settings:
+        label_visibility: '1'
+        desc: ''
+        desc_visibility: '1'
+        first_column: ''
+        second_column: ''
+        empty_label_behavior: '1'
+        always_show_field_value: 0
+        empty_field_placeholder: ''
+        id: ''
+        classes: dgi-metadata-subtable
+        table_row_striping: 0
+        always_show_field_label: 0
+      label: Titles
+id: paragraph.title.default
+targetEntityType: paragraph
+bundle: title
+mode: default
+content:
+  field_title:
+    type: basic_string
+    weight: 1
+    region: content
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+  field_title_type:
+    type: list_default
+    weight: 0
+    region: content
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  search_api_excerpt: true

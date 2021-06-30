@@ -1,0 +1,27 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_grid
+    - taxonomy.vocabulary.organizational_units
+  module:
+    - custom_add_another
+    - link
+third_party_settings:
+  custom_add_another:
+    custom_add_another: ''
+    custom_remove: ''
+id: taxonomy_term.organizational_units.field_grid
+field_name: field_grid
+entity_type: taxonomy_term
+bundle: organizational_units
+label: GRID
+description: 'URL for the organizational unit''s GRID. See https://grid.ac.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 16
+  title: 0
+field_type: link

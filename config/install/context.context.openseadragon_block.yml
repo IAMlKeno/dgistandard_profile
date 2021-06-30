@@ -1,0 +1,26 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - islandora
+name: openseadragon_block
+label: 'Paged Content - Openseadragon'
+group: Display
+description: 'Display a block for Paged Content'
+requireAllConditions: false
+disabled: false
+conditions:
+  node_has_term:
+    id: node_has_term
+    negate: 0
+    uuid: e5689bd5-7eec-4378-b329-2f35d5bb35b0
+    uri: 'https://schema.org/Book,https://schema.org/PublicationIssue'
+    context_mapping:
+      node: '@node.node_route_context:node'
+    logic: or
+reactions:
+  view_mode_alter:
+    id: view_mode_alter
+    mode: node.openseadragon_paged_content
+    saved: false
+weight: -1

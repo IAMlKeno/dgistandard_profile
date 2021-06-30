@@ -1,0 +1,45 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.dcmi_types.field_label
+    - field.field.taxonomy_term.dcmi_types.field_uri_dcmi_type
+    - taxonomy.vocabulary.dcmi_types
+  module:
+    - link
+    - text
+id: taxonomy_term.dcmi_types.default
+targetEntityType: taxonomy_term
+bundle: dcmi_types
+mode: default
+content:
+  description:
+    label: hidden
+    type: text_default
+    weight: 1
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_label:
+    weight: 0
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_uri_dcmi_type:
+    weight: 2
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link
+    region: content
+hidden:
+  langcode: true
+  search_api_excerpt: true

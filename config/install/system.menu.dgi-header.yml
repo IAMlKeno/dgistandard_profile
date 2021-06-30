@@ -1,0 +1,12 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - sitemap
+third_party_settings:
+  sitemap:
+    sitemap_display_name: 'Site Navigation'
+id: dgi-header
+label: 'DGI Header Menu'
+description: 'Menu to be embedded in the DGI Header block by default.'
+locked: false

@@ -1,0 +1,24 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_total
+    - paragraphs.paragraphs_type.part
+  module:
+    - custom_add_another
+third_party_settings:
+  custom_add_another:
+    custom_add_another: ''
+    custom_remove: ''
+id: paragraph.part.field_total
+field_name: field_total
+entity_type: paragraph
+bundle: part
+label: Total
+description: 'The total number of units within a part, in lieu of supplying start and end units, expressed as a positive integer.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,74 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - search_api.index.default_solr_index
+    - views.view.solr_search_content
+  module:
+    - search_api
+id: list_results_facet_summary
+name: 'List Results Facet Summary'
+facets:
+  content_type_list:
+    checked: true
+    label: 'Content type'
+    separator: ', '
+    weight: 0
+    show_count: false
+  created_page_list:
+    checked: true
+    label: Created
+    separator: ', '
+    weight: 0
+    show_count: false
+  genre_list:
+    checked: true
+    label: Genre
+    separator: ', '
+    weight: 0
+    show_count: false
+  geographic_subject_list:
+    checked: true
+    label: 'Geographic Subject'
+    separator: ', '
+    weight: 0
+    show_count: false
+  member_of:
+    checked: true
+    label: 'Member of'
+    separator: ', '
+    weight: 0
+    show_count: false
+  model:
+    checked: true
+    label: Model
+    separator: ', '
+    weight: 0
+    show_count: false
+  resource_type_list:
+    checked: true
+    label: 'Resource Type'
+    separator: ', '
+    weight: 0
+    show_count: false
+  subject_list:
+    checked: true
+    label: Subject
+    separator: ', '
+    weight: 0
+    show_count: false
+facet_source_id: 'search_api:views_page__solr_search_content__page_2'
+processor_configs:
+  hide_when_not_rendered:
+    processor_id: hide_when_not_rendered
+    weights:
+      build: '45'
+    settings: {  }
+  show_text_when_empty:
+    processor_id: show_text_when_empty
+    weights:
+      build: '10'
+    settings:
+      text:
+        value: 'No results found.'
+        format: plain_text

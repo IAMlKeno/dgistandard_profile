@@ -1,0 +1,38 @@
+langcode: en
+status: true
+dependencies: {  }
+id: ingester
+label: Ingester
+weight: -7
+is_admin: null
+permissions:
+  - 'access tour'
+  - 'access user profiles'
+  - 'activate islandora_spreadsheet_ingest requests'
+  - 'administer migrations'
+  - 'create audio media'
+  - 'create file media'
+  - 'create image media'
+  - 'create islandora_object content'
+  - 'create islandora_spreadsheet_ingest requests'
+  - 'create media'
+  - 'create remote_video media'
+  - 'create video media'
+  - 'deleta islandora_spreadsheet_ingest requests'
+  - 'delete own islandora_object content'
+  - 'display eu cookie compliance popup'
+  - 'edit islandora_spreadsheet_ingest requests'
+  - 'edit own audio media'
+  - 'edit own file media'
+  - 'edit own image media'
+  - 'edit own islandora_object content'
+  - 'edit own remote_video media'
+  - 'edit own video media'
+  - 'execute graphql requests'
+  - 'ingest with islandora spreadsheet ingest'
+  - 'update media'
+  - 'use text format basic_html'
+  - 'use text format restricted_html'
+  - 'view islandora_spreadsheet_ingest requests'
+  - 'view own unpublished content'
+  - 'view own unpublished media'

@@ -1,0 +1,7 @@
+langcode: en
+status: true
+dependencies: {  }
+name: 'Access Status'
+vid: taxonomy_access_status
+description: 'Subset of PSO terms used for access control.'
+weight: 0

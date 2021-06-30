@@ -1,0 +1,7 @@
+langcode: en
+status: true
+dependencies: {  }
+id: follow
+label: Follow
+description: 'The follow portion of the footer in the DGI Footer Menu Block.'
+locked: false

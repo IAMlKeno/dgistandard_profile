@@ -1,0 +1,175 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - facets.facet.part_type_grid
+    - field.field.paragraph.part.field_additional_information
+    - field.field.paragraph.part.field_caption
+    - field.field.paragraph.part.field_date
+    - field.field.paragraph.part.field_end
+    - field.field.paragraph.part.field_extent
+    - field.field.paragraph.part.field_extent_units
+    - field.field.paragraph.part.field_list
+    - field.field.paragraph.part.field_number
+    - field.field.paragraph.part.field_part_order
+    - field.field.paragraph.part.field_part_type
+    - field.field.paragraph.part.field_start
+    - field.field.paragraph.part.field_title
+    - field.field.paragraph.part.field_total
+    - paragraphs.paragraphs_type.part
+  module:
+    - controlled_access_terms
+    - entity_reference_facet_link
+    - field_group
+    - options
+third_party_settings:
+  field_group:
+    group_part:
+      children:
+        - field_title
+        - field_part_type
+        - field_part_order
+        - field_number
+        - field_caption
+        - field_extent
+        - field_extent_units
+        - field_start
+        - field_end
+        - field_total
+        - field_list
+        - field_date
+        - field_additional_information
+      parent_name: ''
+      weight: 20
+      format_type: field_group_table
+      region: content
+      format_settings:
+        id: ''
+        classes: dgi-metadata-subtable
+        label_visibility: '1'
+        desc: ''
+        desc_visibility: '1'
+        first_column: ''
+        second_column: ''
+        empty_label_behavior: '1'
+        table_row_striping: 0
+        always_show_field_label: 0
+        always_show_field_value: 0
+        empty_field_placeholder: ''
+        formatter: closed
+        description: ''
+        effect: none
+      label: Part
+id: paragraph.part.default
+targetEntityType: paragraph
+bundle: part
+mode: default
+content:
+  field_additional_information:
+    weight: 12
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+    region: content
+  field_caption:
+    weight: 3
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_date:
+    weight: 11
+    label: above
+    settings:
+      date_separator: dash
+      date_order: big_endian
+      month_format: mm
+      day_format: dd
+    third_party_settings: {  }
+    type: edtf_default
+    region: content
+  field_end:
+    weight: 8
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_extent:
+    weight: 5
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_extent_units:
+    weight: 6
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
+    region: content
+  field_list:
+    weight: 10
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_number:
+    weight: 2
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_part_order:
+    weight: 1
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    type: number_integer
+    region: content
+  field_part_type:
+    weight: 0
+    label: above
+    settings:
+      facet: part_type_grid
+      target: id
+    third_party_settings: {  }
+    type: entity_reference_facet_link
+    region: content
+  field_start:
+    weight: 7
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_title:
+    type: basic_string
+    weight: 4
+    region: content
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+  field_total:
+    weight: 9
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+hidden:
+  search_api_excerpt: true

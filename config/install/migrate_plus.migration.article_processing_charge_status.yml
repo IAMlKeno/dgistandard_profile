@@ -1,0 +1,34 @@
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - dgi_i8_helper_base_taxonomies
+id: article_processing_charge_status
+class: null
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - dgi_taxonomies
+migration_group: islandora
+label: 'Article Processing Charge Status'
+source:
+  plugin: csv
+  header_row_count: 1
+  track_changes: true
+  keys:
+    id:
+      type: integer
+  path: modules/contrib/dgi_i8_helper/modules/dgi_i8_helper_base_taxonomies/migrate/article_processing_charge_status.csv
+process:
+  name: name
+  description: description
+  field_uri_spar_pso:
+    plugin: urlencode
+    source: field_uri_spar_pso
+  field_label_spar_pso: field_label_spar_pso
+destination:
+  plugin: 'entity:taxonomy_term'
+  default_bundle: article_processing_charge_status
+migration_dependencies:
+  required: {  }

@@ -1,0 +1,188 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.origin_information.field_copyright_date
+    - field.field.paragraph.origin_information.field_date_captured
+    - field.field.paragraph.origin_information.field_date_created
+    - field.field.paragraph.origin_information.field_date_issued
+    - field.field.paragraph.origin_information.field_date_modified
+    - field.field.paragraph.origin_information.field_date_valid
+    - field.field.paragraph.origin_information.field_edition
+    - field.field.paragraph.origin_information.field_event_type
+    - field.field.paragraph.origin_information.field_frequency
+    - field.field.paragraph.origin_information.field_issuance
+    - field.field.paragraph.origin_information.field_other_date
+    - field.field.paragraph.origin_information.field_place
+    - field.field.paragraph.origin_information.field_publisher
+    - paragraphs.paragraphs_type.origin_information
+  module:
+    - controlled_access_terms
+    - field_group
+    - options
+third_party_settings:
+  field_group:
+    group_origin_information:
+      children:
+        - field_event_type
+        - field_place
+        - field_date_created
+        - field_date_issued
+        - field_date_captured
+        - field_date_valid
+        - field_date_modified
+        - field_other_date
+        - field_copyright_date
+        - field_publisher
+        - field_edition
+        - field_issuance
+        - field_frequency
+      parent_name: group_or
+      weight: 20
+      format_type: field_group_table
+      region: content
+      format_settings:
+        id: ''
+        classes: dgi-metadata-subtable
+        label_visibility: '1'
+        desc: ''
+        desc_visibility: '1'
+        first_column: ''
+        second_column: ''
+        empty_label_behavior: '1'
+        table_row_striping: 0
+        always_show_field_label: 0
+        always_show_field_value: 0
+        empty_field_placeholder: ''
+      label: 'Origin Information'
+id: paragraph.origin_information.default
+targetEntityType: paragraph
+bundle: origin_information
+mode: default
+content:
+  field_copyright_date:
+    weight: 8
+    label: above
+    settings:
+      date_separator: dash
+      date_order: big_endian
+      month_format: mm
+      day_format: dd
+    third_party_settings: {  }
+    type: edtf_default
+    region: content
+  field_date_captured:
+    weight: 4
+    label: above
+    settings:
+      date_separator: dash
+      date_order: big_endian
+      month_format: mm
+      day_format: dd
+    third_party_settings: {  }
+    type: edtf_default
+    region: content
+  field_date_created:
+    weight: 2
+    label: above
+    settings:
+      date_separator: dash
+      date_order: big_endian
+      month_format: mm
+      day_format: dd
+    third_party_settings: {  }
+    type: edtf_default
+    region: content
+  field_date_issued:
+    weight: 3
+    label: above
+    settings:
+      date_separator: dash
+      date_order: big_endian
+      month_format: mm
+      day_format: dd
+    third_party_settings: {  }
+    type: edtf_default
+    region: content
+  field_date_modified:
+    weight: 6
+    label: above
+    settings:
+      date_separator: dash
+      date_order: big_endian
+      month_format: mm
+      day_format: dd
+    third_party_settings: {  }
+    type: edtf_default
+    region: content
+  field_date_valid:
+    weight: 5
+    label: above
+    settings:
+      date_separator: dash
+      date_order: big_endian
+      month_format: mm
+      day_format: dd
+    third_party_settings: {  }
+    type: edtf_default
+    region: content
+  field_edition:
+    weight: 10
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_event_type:
+    weight: 0
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_frequency:
+    weight: 12
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_issuance:
+    weight: 11
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
+    region: content
+  field_other_date:
+    weight: 7
+    label: above
+    settings:
+      date_separator: dash
+      date_order: big_endian
+      month_format: mm
+      day_format: dd
+    third_party_settings: {  }
+    type: edtf_default
+    region: content
+  field_place:
+    weight: 1
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_publisher:
+    weight: 9
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+hidden:
+  search_api_excerpt: true

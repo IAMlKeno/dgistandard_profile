@@ -1,0 +1,7 @@
+langcode: en
+status: true
+dependencies: {  }
+name: 'MODS Relation Types'
+vid: mods_relation_types
+description: 'The relationship between a related item and the resource being described in the record when it is one of the enumerated types.'
+weight: 0

@@ -1,0 +1,25 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_date_captured
+    - paragraphs.paragraphs_type.origin_information
+  module:
+    - controlled_access_terms
+    - custom_add_another
+third_party_settings:
+  custom_add_another:
+    custom_add_another: ''
+    custom_remove: ''
+id: paragraph.origin_information.field_date_captured
+field_name: field_date_captured
+entity_type: paragraph
+bundle: origin_information
+label: 'Date Captured'
+description: 'The date on which the resource was digitized or a subsequent snapshot was taken.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: edtf

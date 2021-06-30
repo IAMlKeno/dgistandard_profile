@@ -1,0 +1,43 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.block_display.body
+    - field.field.node.block_display.field_display_block
+    - field.field.node.block_display.field_display_block_images
+    - field.field.node.block_display.field_elevated_title
+    - field.field.node.block_display.field_view_mode
+    - node.type.block_display
+  module:
+    - user
+id: node.block_display.default
+targetEntityType: node
+bundle: block_display
+mode: default
+content:
+  links:
+    weight: 100
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  addtoany: true
+  body: true
+  display_media_entity_view_1: true
+  display_media_entity_view_2: true
+  display_media_extracted_text: true
+  display_media_service_file: true
+  display_media_thumbnail: true
+  field_display_block: true
+  field_display_block_images: true
+  field_elevated_title: true
+  field_view_mode: true
+  langcode: true
+  openseadragon_media_evas_entity_view_1: true
+  openseadragon_media_evas_entity_view_2: true
+  openseadragon_media_evas_service_file: true
+  paged_content_text_entity_view_1: true
+  pdfjs_media_evas_entity_view_1: true
+  pdfjs_media_evas_entity_view_2: true
+  pdfjs_media_evas_service_file: true
+  search_api_excerpt: true

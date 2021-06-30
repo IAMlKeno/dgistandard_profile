@@ -1,0 +1,5 @@
+langcode: en
+status: true
+dependencies: {  }
+id: object_page_split_sidebar
+label: 'Object Page: Split Sidebar'

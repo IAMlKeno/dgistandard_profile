@@ -1,0 +1,1147 @@
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - dgi_standard_spreadsheet_ingest
+id: dssi_node
+class: null
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags: null
+migration_group: dssi
+label: 'Create nodes from rows in the csv.'
+source:
+  dssi_misc:
+    edtf_validation:
+      plugin: dgi_migrate_edtf_validator
+      sets: false
+      intervals: false
+    case_insensitive: true
+process:
+  uid:
+    -
+      plugin: get
+      source: isi/uid
+  field_model:
+    -
+      plugin: skip_on_empty
+      source: model
+      method: row
+      message: '"model" column is missing'
+    -
+      plugin: static_map
+      bypass: false
+      map:
+        Audio: 'http://purl.org/coar/resource_type/c_18cc'
+        Binary: 'http://purl.org/coar/resource_type/c_1843'
+        Collection: 'http://purl.org/dc/dcmitype/Collection'
+        'Digital Document': 'https://schema.org/DigitalDocument'
+        Image: 'http://purl.org/coar/resource_type/c_c513'
+        Page: 'http://id.loc.gov/ontologies/bibframe/part'
+        'Paged Content': 'https://schema.org/Book'
+        'Publication Issue': 'https://schema.org/PublicationIssue'
+        Video: 'http://purl.org/coar/resource_type/c_12ce'
+    -
+      plugin: entity_lookup
+      bundle_key: vid
+      bundle: islandora_models
+      value_key: field_external_uri
+      entity_type: taxonomy_term
+      ignore_case: true
+  field_weight:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: weight
+  field_display_hints:
+    -
+      plugin: static_map
+      source: model
+      bypass: true
+      map:
+        'Digital Document': 'http://mozilla.github.io/pdf.js'
+        Image: 'http://openseadragon.github.io'
+        Page: 'http://openseadragon.github.io'
+    -
+      plugin: skip_on_empty
+      method: process
+    -
+      plugin: entity_lookup
+      bundle_key: vid
+      bundle: islandora_display
+      value_key: field_external_uri
+      entity_type: taxonomy_term
+      ignore_case: true
+  field_member_of:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: member_of_existing_entity
+    -
+      plugin: entity_lookup
+      bundle_key: type
+      bundle: islandora_object
+      value_key: title
+      entity_type: node
+      ignore_case: true
+    -
+      plugin: skip_on_empty
+      method: row
+      message: 'Failed to find collection specified by ''member_of_existing_entity''.'
+  _title_map:
+    -
+      plugin: skip_on_empty
+      source: title
+      method: row
+      message: 'Missing ''title''.'
+    -
+      plugin: subdelimited_explode
+      delimiter: ;
+      subdelimiter: '|'
+      keys:
+        - title
+        - type
+    -
+      plugin: sub_process
+      process:
+        title:
+          -
+            plugin: skip_on_empty
+            source: title
+            method: row
+            message: 'Missing ''title'' after explode?'
+        type:
+          -
+            plugin: default_value
+            source: type
+            default_value: __default__
+    -
+      plugin: callback
+      callable: array_reverse
+    -
+      plugin: array_build
+      key: type
+      value: title
+  title:
+    -
+      plugin: null_coalesce
+      source:
+        - '@_title_map/__default__'
+        - '@_title_map/uniform'
+    -
+      plugin: skip_on_empty
+      method: row
+      message: 'Missing usable ''title'': There must be either an untyped or ''uniform'' title present.'
+  field_title:
+    -
+      plugin: skip_on_empty
+      source: title
+      method: process
+    -
+      plugin: subdelimited_explode
+      delimiter: ;
+      subdelimiter: '|'
+      keys:
+        - title
+        - type
+    -
+      plugin: dgi_paragraph_generate
+      validate: true
+      type: title
+      process_values: true
+      values:
+        field_title:
+          -
+            plugin: get
+            source: parent_value/title
+        field_title_type:
+          -
+            plugin: skip_on_empty
+            source: parent_value/type
+            method: process
+          -
+            plugin: static_map
+            bypass: false
+            map:
+              abbreviated: abbreviated
+              alternative: alternative
+              translated: translated
+              uniform: uniform
+  field_resource_type:
+    -
+      plugin: skip_on_empty
+      source: resource_type
+      method: row
+      message: 'Missing ''resource_type''.'
+    -
+      plugin: entity_lookup
+      bundle: resource_types
+      bundle_key: vid
+      entity_type: taxonomy_term
+      value_key: name
+      ignore_case: true
+  field_table_of_contents:
+    -
+      plugin: get
+      source: table_of_contents
+  field_description:
+    -
+      plugin: get
+      source: description
+  field_target_audience:
+    -
+      plugin: skip_on_empty
+      source: target_audience
+      method: process
+    -
+      plugin: static_map
+      bypass: false
+      map:
+        adolescent: adolescent
+        adult: adult
+        general: general
+        juvenile: juvenile
+        preschool: preschool
+        specialized: specialized
+  field_local_identifier:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: local_identifier
+  field_purl:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: purl
+  field_doi:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: doi
+  field_handle:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: handle
+  field_ark:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: ark
+  field_isbn:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: isbn
+  field_oclc_number:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: oclc_number
+  field_linked_agent:
+    -
+      plugin: skip_on_empty
+      source: persons
+      method: process
+    -
+      plugin: subdelimited_explode
+      delimiter: ;
+      subdelimiter: '|'
+      keys:
+        - name
+        - role
+    -
+      plugin: sub_process
+      process:
+        target_id:
+          -
+            plugin: callback
+            source: name
+            callable: trim
+          -
+            plugin: skip_on_empty
+            method: row
+            message: 'Empty person name'
+          -
+            plugin: entity_generate
+            bundle: person
+            bundle_key: vid
+            entity_type: taxonomy_term
+            value_key: name
+            ignore_case: true
+        rel_type:
+          -
+            plugin: skip_on_empty
+            source: role
+            method: process
+  field_organizations:
+    -
+      plugin: skip_on_empty
+      source: organizations
+      method: process
+    -
+      plugin: subdelimited_explode
+      delimiter: ;
+      subdelimiter: '|'
+      keys:
+        - name
+        - role
+    -
+      plugin: sub_process
+      process:
+        target_id:
+          -
+            plugin: callback
+            source: name
+            callable: trim
+          -
+            plugin: skip_on_empty
+            method: row
+            message: 'Empty org name'
+          -
+            plugin: entity_generate
+            bundle: corporate_body
+            bundle_key: vid
+            entity_type: taxonomy_term
+            value_key: name
+            ignore_case: true
+        rel_type:
+          -
+            plugin: skip_on_empty
+            source: role
+            method: process
+  field_genre:
+    -
+      plugin: skip_on_empty
+      source: genre
+      method: process
+    -
+      plugin: explode
+      delimiter: ;
+    -
+      plugin: callback
+      callable: trim
+    -
+      plugin: skip_on_empty
+      method: row
+      message: 'Empty genre'
+    -
+      plugin: entity_generate
+      bundle: genre
+      bundle_key: vid
+      entity_type: taxonomy_term
+      value_key: name
+      ignore_case: true
+  field_subject:
+    -
+      plugin: skip_on_empty
+      source: subject
+      method: process
+    -
+      plugin: explode
+      delimiter: ;
+    -
+      plugin: callback
+      callable: trim
+    -
+      plugin: entity_generate
+      bundle: subject
+      bundle_key: vid
+      entity_type: taxonomy_term
+      value_key: name
+      ignore_case: true
+  field_faceted_subject:
+    -
+      plugin: skip_on_empty
+      source: faceted_subject
+      method: process
+    -
+      plugin: subdelimited_explode
+      delimiter: ;
+      subdelimiter: '|'
+      keys:
+        - ffs_source
+        - ffs_url
+        - ffs_topic
+        - ffs_genre
+        - ffs_temp
+        - ffs_geo
+    -
+      plugin: dgi_paragraph_generate
+      validate: true
+      type: faceted_subject
+      process_values: true
+      values:
+        field_authority_sources/source:
+          -
+            plugin: get
+            source: parent_value/ffs_source
+        field_authority_sources/uri:
+          -
+            plugin: get
+            source: parent_value/ffs_url
+        field_topic_general_subdivision_:
+          -
+            plugin: skip_on_empty
+            method: process
+            source: parent_value/ffs_topic
+          -
+            plugin: entity_generate
+            entity_type: taxonomy_term
+            bundle: subject
+            bundle_key: vid
+            value_key: name
+            ignore_case: true
+        field_genre_form_subdivision_:
+          -
+            plugin: skip_on_empty
+            method: process
+            source: parent_value/ffs_genre
+          -
+            plugin: entity_generate
+            entity_type: taxonomy_term
+            bundle: genre
+            bundle_key: vid
+            value_key: name
+            ignore_case: true
+        field_temporal_chronological_sub:
+          -
+            plugin: skip_on_empty
+            method: process
+            source: parent_value/ffs_temp
+          -
+            plugin: entity_generate
+            entity_type: taxonomy_term
+            bundle: temporal
+            bundle_key: vid
+            value_key: name
+            ignore_case: true
+        field_geographic_geographic_subd:
+          -
+            plugin: skip_on_empty
+            method: process
+            source: parent_value/ffs_geo
+          -
+            plugin: entity_generate
+            entity_type: taxonomy_term
+            bundle: geo_location
+            bundle_key: vid
+            value_key: name
+            ignore_case: true
+  field_temporal_subject:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: temporal_subject
+    -
+      plugin: explode
+      delimiter: ;
+    -
+      plugin: callback
+      callable: trim
+    -
+      plugin: entity_generate
+      entity_type: taxonomy_term
+      bundle: temporal
+      bundle_key: vid
+      value_key: name
+      ignore_case: true
+  field_geographic_subject:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: geographic_subject
+    -
+      plugin: explode
+      delimiter: ;
+    -
+      plugin: callback
+      callable: trim
+    -
+      plugin: entity_generate
+      entity_type: taxonomy_term
+      bundle: geo_location
+      bundle_key: vid
+      value_key: name
+      ignore_case: true
+  field_hierarchical_geographic_su:
+    -
+      plugin: skip_on_empty
+      source: hierarchical_geographic_subject
+      method: process
+    -
+      plugin: subdelimited_explode
+      delimiter: ;
+      subdelimiter: '|'
+      keys:
+        - continent
+        - country
+        - region
+        - state
+        - territory
+        - county
+        - city
+        - city_section
+        - island
+        - area
+        - extraterrestrial_area
+    -
+      plugin: dgi_paragraph_generate
+      validate: true
+      type: hierarchical_geographic_subject
+      process_values: true
+      values:
+        field_continent:
+          -
+            plugin: skip_on_empty
+            method: process
+            source: parent_value/continent
+        field_country:
+          -
+            plugin: skip_on_empty
+            method: process
+            source: parent_value/country
+        field_region:
+          -
+            plugin: skip_on_empty
+            method: process
+            source: parent_value/region
+        field_state:
+          -
+            plugin: skip_on_empty
+            method: process
+            source: parent_value/state
+        field_territory:
+          -
+            plugin: skip_on_empty
+            method: process
+            source: parent_value/territory
+        field_county:
+          -
+            plugin: skip_on_empty
+            method: process
+            source: parent_value/county
+        field_city:
+          -
+            plugin: skip_on_empty
+            method: process
+            source: parent_value/city
+        field_city_section:
+          -
+            plugin: skip_on_empty
+            method: process
+            source: parent_value/city_section
+        field_island:
+          -
+            plugin: skip_on_empty
+            method: process
+            source: parent_value/island
+        field_area:
+          -
+            plugin: skip_on_empty
+            method: process
+            source: parent_value/area
+        field_extraterrestrial_area:
+          -
+            plugin: skip_on_empty
+            method: process
+            source: parent_value/extraterrestrial_area
+  _coords:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: coordinates
+    -
+      plugin: explode
+      delimiter: ;
+  field_coordinates/0/lat:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: '@_coords/0'
+  field_coordinates/0/lng:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: '@_coords/1'
+  field_geographic_code:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: geographic_code
+  field_lcc_classification:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: loc_classification
+  field_origin_information:
+    -
+      plugin: skip_on_empty
+      source: origin_information
+      method: process
+    -
+      plugin: subdelimited_explode
+      delimiter: ;
+      subdelimiter: '|'
+      keys:
+        - event_type
+        - place
+        - date_created
+        - date_issued
+        - date_captured
+        - date_valid
+        - date_modified
+        - other_date
+        - copyright_date
+        - publisher
+        - edition
+        - issuance
+        - frequency
+    -
+      plugin: dgi_paragraph_generate
+      validate: true
+      type: origin_information
+      process_values: true
+      values:
+        field_event_type:
+          -
+            plugin: skip_on_empty
+            method: process
+            source: parent_value/event_type
+        field_place:
+          -
+            plugin: skip_on_empty
+            method: process
+            source: parent_value/place
+        field_date_created:
+          -
+            plugin: skip_on_empty
+            method: process
+            source: parent_value/date_created
+          -
+            plugin: dgi_migrate_edtf_validator
+            sets: false
+            intervals: false
+        field_date_issued:
+          -
+            plugin: skip_on_empty
+            method: process
+            source: parent_value/date_issued
+          -
+            plugin: dgi_migrate_edtf_validator
+            sets: false
+            intervals: false
+        field_date_captured:
+          -
+            plugin: skip_on_empty
+            method: process
+            source: parent_value/date_captured
+          -
+            plugin: dgi_migrate_edtf_validator
+            sets: false
+            intervals: false
+        field_date_valid:
+          -
+            plugin: skip_on_empty
+            method: process
+            source: parent_value/date_valid
+          -
+            plugin: dgi_migrate_edtf_validator
+            sets: false
+            intervals: false
+        field_date_modified:
+          -
+            plugin: skip_on_empty
+            method: process
+            source: parent_value/date_modified
+          -
+            plugin: dgi_migrate_edtf_validator
+            sets: false
+            intervals: false
+        field_other_date:
+          -
+            plugin: skip_on_empty
+            method: process
+            source: parent_value/other_date
+          -
+            plugin: dgi_migrate_edtf_validator
+            sets: false
+            intervals: false
+        field_copyright_date:
+          -
+            plugin: skip_on_empty
+            method: process
+            source: parent_value/copyright_date
+          -
+            plugin: dgi_migrate_edtf_validator
+            sets: false
+            intervals: false
+        field_publisher:
+          -
+            plugin: skip_on_empty
+            method: process
+            source: parent_value/publisher
+        field_edition:
+          -
+            plugin: skip_on_empty
+            method: process
+            source: parent_value/edition
+        field_issuance:
+          -
+            plugin: skip_on_empty
+            method: process
+            source: parent_value/issuance
+          -
+            plugin: static_map
+            bypass: false
+            map:
+              monographic: monographic
+              'single unit': 'single unit'
+              'multipart monograph': 'multipart monograph'
+              continuing: continuing
+              serial: serial
+              'integrating resource': 'integrating resource'
+        field_frequency:
+          -
+            plugin: skip_on_empty
+            method: process
+            source: parent_value/frequency
+  field_extent:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: extent
+  field_physical_form:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: physical_form
+    -
+      plugin: explode
+      delimiter: ;
+    -
+      plugin: callback
+      callable: trim
+    -
+      plugin: entity_generate
+      entity_type: taxonomy_term
+      bundle: physical_form
+      bundle_key: vid
+      value_key: name
+      ignore_case: true
+  field_reformatting_quality:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: reformatting_quality
+    -
+      plugin: static_map
+      bypass: false
+      map:
+        access: access
+        preservation: preservation
+        replacement: replacement
+  field_digital_origin:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: digital_origin
+    -
+      plugin: static_map
+      bypass: false
+      map:
+        'born digital': 'born digital'
+        'digitized microfilm': 'digitized microfilm'
+        'digitized other analog': 'digitized other analog'
+        'reformatted digital': 'reformatted digital'
+  field_note:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: physical_description_note
+  field_note_paragraph:
+    -
+      plugin: skip_on_empty
+      source: notes
+      method: process
+    -
+      plugin: subdelimited_explode
+      delimiter: ;
+      subdelimiter: '|'
+      keys:
+        - note_type
+        - note
+    -
+      plugin: dgi_paragraph_generate
+      validate: true
+      type: note
+      process_values: true
+      values:
+        field_note_type:
+          -
+            plugin: skip_on_empty
+            method: process
+            source: parent_value/note_type
+          -
+            plugin: static_map
+            bypass: false
+            map:
+              acquisition: acquisition
+              action: action
+              'additional physical form': 'additional physical form'
+              bibliography: bibliography
+              biographical/historical: biographical/historical
+              'creation/production credits': 'creation/production credits'
+              'date/sequential designation': 'date/sequential designation'
+              exhibitions: exhibitions
+              funding: funding
+              language: language
+              numbering: numbering
+              'original location': 'original location'
+              ownership: ownership
+              performers: performers
+              'preferred citation': 'preferred citation'
+              provenance: provenance
+              publications: publications
+              reproduction: reproduction
+              'statement of responsibility': 'statement of responsibility'
+              'system details': 'system details'
+              thesis: thesis
+              venue: venue
+              'version identification': 'version identification'
+        field_note:
+          -
+            plugin: skip_on_empty
+            method: process
+            source: parent_value/note
+  field_related_item_paragraph:
+    -
+      plugin: skip_on_empty
+      source: related_items
+      method: process
+    -
+      plugin: subdelimited_explode
+      delimiter: ;
+      subdelimiter: '|'
+      keys:
+        - relationship_type
+        - title
+        - url
+        - extent
+    -
+      plugin: dgi_paragraph_generate
+      validate: true
+      type: related_item
+      process_values: true
+      values:
+        field_relationship_type:
+          -
+            plugin: skip_on_empty
+            method: process
+            source: parent_value/relationship_type
+          -
+            plugin: entity_lookup
+            bundle: dcmi_relation_types
+            bundle_key: vid
+            entity_type: taxonomy_term
+            value_key: name
+            ignore_case: true
+        field_title:
+          -
+            plugin: skip_on_empty
+            method: process
+            source: parent_value/title
+        field_url/uri:
+          -
+            plugin: skip_on_empty
+            method: process
+            source: parent_value/url
+        field_related_item_extent:
+          -
+            plugin: skip_on_empty
+            method: process
+            source: parent_value/extent
+  field_physical_location:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: physical_location
+  field_sub_location:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: sublocation
+  field_shelf_locator:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: shelf_locator
+  field_electronic_locator:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: electronic_locator
+  field_form:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: location_form
+  field_note_location:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: location_note
+  field_enumeration_and_chronology:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: enumeration_and_chronology
+  field_item_identifier:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: location_item_identifier
+  field_url/uri:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: location_url
+  field_access_terms:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: access_restriction_term
+    -
+      plugin: entity_generate
+      bundle: islandora_access
+      bundle_key: vid
+      entity_type: taxonomy_term
+      value_key: name
+      ignore_case: true
+  field_restriction_on_access:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: restriction_on_access
+  field_use_and_reproduction:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: use_and_reproduction
+  field_rights_statement:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: rights_statement
+    -
+      plugin: entity_lookup
+      bundle: rights_statements
+      bundle_key: vid
+      entity_type: taxonomy_term
+      value_key: name
+      ignore_case: true
+    -
+      plugin: skip_on_empty
+      method: row
+      message: 'Invalid ''rights_statement''.'
+  field_part:
+    -
+      plugin: skip_on_empty
+      source: part
+      method: process
+    -
+      plugin: subdelimited_explode
+      delimiter: ;
+      subdelimiter: '|'
+      keys:
+        - part_type
+        - part_order
+        - number
+        - caption
+        - title
+        - extent
+        - extent_units
+        - start
+        - end
+        - total
+        - list
+        - date
+        - additional_information
+    -
+      plugin: dgi_paragraph_generate
+      validate: true
+      type: part
+      process_values: true
+      values:
+        field_part_type:
+          -
+            plugin: skip_on_empty
+            method: process
+            source: parent_value/part_type
+          -
+            plugin: entity_generate
+            bundle: part_type
+            bundle_key: vid
+            entity_type: taxonomy_term
+            value_key: name
+            ignore_case: true
+        field_part_order:
+          -
+            plugin: skip_on_empty
+            method: process
+            source: parent_value/part_order
+        field_number:
+          -
+            plugin: skip_on_empty
+            method: process
+            source: parent_value/number
+        field_caption:
+          -
+            plugin: skip_on_empty
+            method: process
+            source: parent_value/caption
+        field_title:
+          -
+            plugin: skip_on_empty
+            method: process
+            source: parent_value/title
+        field_extent:
+          -
+            plugin: skip_on_empty
+            method: process
+            source: parent_value/extent
+        field_extent_units:
+          -
+            plugin: skip_on_empty
+            method: process
+            source: parent_value/extent_units
+        field_start:
+          -
+            plugin: skip_on_empty
+            method: process
+            source: parent_value/start
+        field_end:
+          -
+            plugin: skip_on_empty
+            method: process
+            source: parent_value/end
+        field_total:
+          -
+            plugin: skip_on_empty
+            method: process
+            source: parent_value/total
+        field_list:
+          -
+            plugin: skip_on_empty
+            method: process
+            source: parent_value/list
+        field_date:
+          -
+            plugin: skip_on_empty
+            method: process
+            source: parent_value/date
+          -
+            plugin: dgi_migrate_edtf_validator
+            sets: false
+            intervals: false
+        field_additional_information:
+          -
+            plugin: skip_on_empty
+            method: process
+            source: parent_value/additional_information
+  field_record_information:
+    -
+      plugin: skip_on_empty
+      source: record_information
+      method: process
+    -
+      plugin: subdelimited_explode
+      delimiter: ;
+      subdelimiter: '|'
+      keys:
+        - record_content_source
+        - record_creation_date
+        - record_change_date
+        - record_identifier
+        - record_origin
+        - record_information_note
+        - record_cataloging_language
+        - description_standard
+    -
+      plugin: dgi_paragraph_generate
+      validate: true
+      type: record_information
+      process_values: true
+      values:
+        field_record_content_source:
+          -
+            plugin: skip_on_empty
+            method: process
+            source: parent_value/record_content_source
+        field_record_creation_date:
+          -
+            plugin: skip_on_empty
+            method: process
+            source: parent_value/record_creation_date
+          -
+            plugin: dgi_migrate_edtf_validator
+            sets: false
+            intervals: false
+        field_record_change_date:
+          -
+            plugin: skip_on_empty
+            method: process
+            source: parent_value/record_change_date
+          -
+            plugin: dgi_migrate_edtf_validator
+            sets: false
+            intervals: false
+        field_record_identifier:
+          -
+            plugin: skip_on_empty
+            method: process
+            source: parent_value/record_identifier
+        field_record_origin:
+          -
+            plugin: skip_on_empty
+            method: process
+            source: parent_value/record_origin
+        field_record_information_note:
+          -
+            plugin: skip_on_empty
+            method: process
+            source: parent_value/record_information_note
+        field_record_cataloging_language:
+          -
+            plugin: skip_on_empty
+            method: process
+            source: parent_value/record_cataloging_language
+          -
+            plugin: entity_generate
+            bundle: language
+            bundle_key: vid
+            entity_type: taxonomy_term
+            value_key: name
+            ignore_case: true
+        field_description_standard:
+          -
+            plugin: skip_on_empty
+            method: process
+            source: parent_value/description_standard
+  status:
+    -
+      plugin: default_value
+      source: publish
+      default_value: 'Y'
+    -
+      plugin: static_map
+      bypass: false
+      map:
+        'Y': 1
+        'N': 0
+destination:
+  plugin: 'entity:node'
+  default_bundle: islandora_object
+  validate: true
+migration_dependencies: null

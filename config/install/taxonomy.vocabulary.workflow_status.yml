@@ -1,0 +1,7 @@
+langcode: en
+status: true
+dependencies: {  }
+name: 'Workflow Status'
+vid: workflow_status
+description: 'Subset of PSO Ontology used for workflow.'
+weight: 0

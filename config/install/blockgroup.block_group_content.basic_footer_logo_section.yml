@@ -1,0 +1,5 @@
+langcode: en
+status: true
+dependencies: {  }
+id: basic_footer_logo_section
+label: 'Basic Footer Logo Section'

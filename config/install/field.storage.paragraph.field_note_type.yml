@@ -1,0 +1,93 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - field_permissions
+    - options
+    - paragraphs
+third_party_settings:
+  field_permissions:
+    permission_type: public
+id: paragraph.field_note_type
+field_name: field_note_type
+entity_type: paragraph
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: acquisition
+      label: acquisition
+    -
+      value: action
+      label: action
+    -
+      value: 'additional physical form'
+      label: 'additional physical form'
+    -
+      value: bibliography
+      label: bibliography
+    -
+      value: biographical/historical
+      label: biographical/historical
+    -
+      value: 'creation/production credits'
+      label: 'creation/production credits'
+    -
+      value: 'date/sequential designation'
+      label: 'date/sequential designation'
+    -
+      value: exhibitions
+      label: exhibitions
+    -
+      value: funding
+      label: funding
+    -
+      value: language
+      label: language
+    -
+      value: numbering
+      label: numbering
+    -
+      value: 'original location'
+      label: 'original location'
+    -
+      value: ownership
+      label: ownership
+    -
+      value: performers
+      label: performers
+    -
+      value: 'preferred citation'
+      label: 'preferred citation'
+    -
+      value: provenance
+      label: provenance
+    -
+      value: publications
+      label: publications
+    -
+      value: reproduction
+      label: reproduction
+    -
+      value: 'statement of responsibility'
+      label: 'statement of responsibility'
+    -
+      value: 'system details'
+      label: 'system details'
+    -
+      value: thesis
+      label: thesis
+    -
+      value: venue
+      label: venue
+    -
+      value: 'version identification'
+      label: 'version identification'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

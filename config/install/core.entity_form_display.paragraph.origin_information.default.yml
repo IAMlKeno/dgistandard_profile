@@ -1,0 +1,121 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.origin_information.field_copyright_date
+    - field.field.paragraph.origin_information.field_date_captured
+    - field.field.paragraph.origin_information.field_date_created
+    - field.field.paragraph.origin_information.field_date_issued
+    - field.field.paragraph.origin_information.field_date_modified
+    - field.field.paragraph.origin_information.field_date_valid
+    - field.field.paragraph.origin_information.field_edition
+    - field.field.paragraph.origin_information.field_event_type
+    - field.field.paragraph.origin_information.field_frequency
+    - field.field.paragraph.origin_information.field_issuance
+    - field.field.paragraph.origin_information.field_other_date
+    - field.field.paragraph.origin_information.field_place
+    - field.field.paragraph.origin_information.field_publisher
+    - paragraphs.paragraphs_type.origin_information
+  module:
+    - controlled_access_terms
+id: paragraph.origin_information.default
+targetEntityType: paragraph
+bundle: origin_information
+mode: default
+content:
+  field_copyright_date:
+    weight: 6
+    settings:
+      strict_dates: false
+      intervals: true
+      sets: false
+    third_party_settings: {  }
+    type: edtf_default
+    region: content
+  field_date_captured:
+    weight: 4
+    settings:
+      strict_dates: false
+      intervals: true
+      sets: false
+    third_party_settings: {  }
+    type: edtf_default
+    region: content
+  field_date_created:
+    weight: 2
+    settings:
+      strict_dates: false
+      intervals: true
+      sets: false
+    third_party_settings: {  }
+    type: edtf_default
+    region: content
+  field_date_issued:
+    weight: 3
+    settings:
+      strict_dates: false
+      intervals: true
+      sets: false
+    third_party_settings: {  }
+    type: edtf_default
+    region: content
+  field_edition:
+    weight: 8
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_event_type:
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_frequency:
+    weight: 10
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_issuance:
+    weight: 9
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_other_date:
+    weight: 5
+    settings:
+      strict_dates: false
+      intervals: true
+      sets: false
+    third_party_settings: {  }
+    type: edtf_default
+    region: content
+  field_place:
+    weight: 1
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_publisher:
+    weight: 7
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+hidden:
+  created: true
+  field_date_modified: true
+  field_date_valid: true
+  status: true

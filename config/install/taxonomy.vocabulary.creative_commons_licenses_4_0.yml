@@ -1,0 +1,7 @@
+langcode: en
+status: true
+dependencies: {  }
+name: 'Creative Commons Licenses 4.0'
+vid: creative_commons_licenses_4_0
+description: 'See https://creativecommons.org/licenses/.'
+weight: 0

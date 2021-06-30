@@ -1,0 +1,68 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.faceted_subject.field_authority_sources
+    - field.field.paragraph.faceted_subject.field_genre_form_subdivision_
+    - field.field.paragraph.faceted_subject.field_geographic_geographic_subd
+    - field.field.paragraph.faceted_subject.field_temporal_chronological_sub
+    - field.field.paragraph.faceted_subject.field_topic_general_subdivision_
+    - paragraphs.paragraphs_type.faceted_subject
+  module:
+    - controlled_access_terms
+id: paragraph.faceted_subject.default
+targetEntityType: paragraph
+bundle: faceted_subject
+mode: default
+content:
+  field_authority_sources:
+    weight: 0
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: authority_link_default
+    region: content
+  field_genre_form_subdivision_:
+    weight: 2
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete_tags
+    region: content
+  field_geographic_geographic_subd:
+    weight: 3
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete_tags
+    region: content
+  field_temporal_chronological_sub:
+    weight: 4
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete_tags
+    region: content
+  field_topic_general_subdivision_:
+    weight: 1
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete_tags
+    region: content
+hidden:
+  created: true
+  status: true

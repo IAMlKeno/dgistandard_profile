@@ -1,0 +1,49 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - facets.facet.model
+    - blockgroup.block_group_content.search_facet_header
+  module:
+    - facets
+    - request_data_conditions
+    - blockgroup
+  theme:
+    - dgi_i8_base
+id: model_2
+theme: dgi_i8_base
+region: search_facet_header
+weight: -10
+provider: null
+plugin: 'facet_block:model'
+settings:
+  id: 'facet_block:model'
+  label: Type
+  provider: facets
+  label_display: '0'
+  block_id: model_2
+visibility:
+  http_headers:
+    id: http_headers
+    conditions: {  }
+    require_all_params: 1
+    negate: false
+    context_mapping: {  }
+  session_values:
+    id: session_values
+    conditions: {  }
+    require_all_params: 1
+    negate: false
+    context_mapping: {  }
+  cookie_values:
+    id: cookie_values
+    conditions: {  }
+    require_all_params: 1
+    negate: false
+    context_mapping: {  }
+  url_query_parameters:
+    id: url_query_parameters
+    conditions: {  }
+    require_all_params: 1
+    negate: false
+    context_mapping: {  }

@@ -1,0 +1,87 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.record_information.field_description_standard
+    - field.field.paragraph.record_information.field_record_cataloging_language
+    - field.field.paragraph.record_information.field_record_change_date
+    - field.field.paragraph.record_information.field_record_content_source
+    - field.field.paragraph.record_information.field_record_creation_date
+    - field.field.paragraph.record_information.field_record_identifier
+    - field.field.paragraph.record_information.field_record_information_note
+    - field.field.paragraph.record_information.field_record_origin
+    - paragraphs.paragraphs_type.record_information
+  module:
+    - controlled_access_terms
+id: paragraph.record_information.default
+targetEntityType: paragraph
+bundle: record_information
+mode: default
+content:
+  field_description_standard:
+    weight: 7
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_record_cataloging_language:
+    weight: 6
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_record_change_date:
+    weight: 2
+    settings:
+      strict_dates: false
+      intervals: true
+      sets: false
+    third_party_settings: {  }
+    type: edtf_default
+    region: content
+  field_record_content_source:
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_record_creation_date:
+    weight: 1
+    settings:
+      strict_dates: false
+      intervals: true
+      sets: false
+    third_party_settings: {  }
+    type: edtf_default
+    region: content
+  field_record_identifier:
+    weight: 3
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_record_information_note:
+    weight: 5
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textarea
+    region: content
+  field_record_origin:
+    weight: 4
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textarea
+    region: content
+hidden:
+  created: true
+  status: true

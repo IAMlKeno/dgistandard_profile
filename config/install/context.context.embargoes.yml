@@ -1,0 +1,25 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+name: embargoes
+label: Embargoes
+group: 'DGI Islandora'
+description: 'Changes the theme to gin on embargoes pages.'
+requireAllConditions: false
+disabled: false
+conditions:
+  request_path:
+    id: request_path
+    pages: "/node/*/embargoes\r\n/node/*/embargoes/*"
+    negate: 0
+    uuid: ee1c1970-5fa6-467a-8846-10acdc7f8cfa
+    context_mapping: {  }
+reactions:
+  theme:
+    id: theme
+    theme: gin
+    saved: false
+    uuid: 0ea46e23-c95f-4a66-b34c-2cb538bc00f4
+weight: 0

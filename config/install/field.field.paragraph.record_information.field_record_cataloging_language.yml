@@ -1,0 +1,34 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_record_cataloging_language
+    - paragraphs.paragraphs_type.record_information
+    - taxonomy.vocabulary.language
+  module:
+    - custom_add_another
+third_party_settings:
+  custom_add_another:
+    custom_add_another: ''
+    custom_remove: ''
+id: paragraph.record_information.field_record_cataloging_language
+field_name: field_record_cataloging_language
+entity_type: paragraph
+bundle: record_information
+label: 'Record Cataloging Language'
+description: 'The language of the text of the record. This is distinct from Language; the latter is used to indicate the language of the resource being cataloged.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      language: language
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

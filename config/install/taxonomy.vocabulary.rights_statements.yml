@@ -1,0 +1,7 @@
+langcode: en
+status: true
+dependencies: {  }
+name: 'Rights Statements'
+vid: rights_statements
+description: 'See https://rightsstatements.org.'
+weight: 0

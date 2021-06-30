@@ -1,0 +1,84 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - facets.facet.relationship_type_grid
+    - field.field.paragraph.related_item.field_related_item_extent
+    - field.field.paragraph.related_item.field_relationship_type
+    - field.field.paragraph.related_item.field_title_plain
+    - field.field.paragraph.related_item.field_url
+    - paragraphs.paragraphs_type.related_item
+  module:
+    - entity_reference_facet_link
+    - field_group
+    - link
+third_party_settings:
+  field_group:
+    group_related_item:
+      children:
+        - field_relationship_type
+        - field_title_plain
+        - field_url
+        - field_related_item_extent
+      parent_name: ''
+      weight: 20
+      format_type: field_group_table
+      region: content
+      format_settings:
+        id: ''
+        classes: dgi-metadata-subtable
+        label_visibility: '1'
+        desc: ''
+        desc_visibility: '1'
+        first_column: ''
+        second_column: ''
+        empty_label_behavior: '1'
+        table_row_striping: 0
+        always_show_field_label: 0
+        always_show_field_value: 0
+        empty_field_placeholder: ''
+      label: 'Related Item'
+id: paragraph.related_item.default
+targetEntityType: paragraph
+bundle: related_item
+mode: default
+content:
+  field_related_item_extent:
+    weight: 3
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_relationship_type:
+    weight: 0
+    label: above
+    settings:
+      facet: relationship_type_grid
+      target: id
+    third_party_settings: {  }
+    type: entity_reference_facet_link
+    region: content
+  field_title_plain:
+    weight: 1
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_url:
+    weight: 2
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link
+    region: content
+hidden:
+  search_api_excerpt: true

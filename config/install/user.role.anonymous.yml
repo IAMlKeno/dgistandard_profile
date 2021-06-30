@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies: {  }
+id: anonymous
+label: 'Anonymous user'
+weight: -10
+is_admin: false
+permissions:
+  - 'access comments'
+  - 'access content'
+  - 'access site-wide contact form'
+  - 'access sitemap'
+  - 'display eu cookie compliance popup'
+  - 'execute graphql requests'
+  - 'search content'
+  - 'use search autocomplete'
+  - 'use text format restricted_html'
+  - 'view field_display_block'
+  - 'view media'
+  - 'view own field_display_block'

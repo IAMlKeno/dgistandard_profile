@@ -1,0 +1,66 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - search_api.index.default_solr_index
+    - views.view.solr_search_content
+  module:
+    - search_api
+id: grid_search_facet_summary
+name: 'Grid Results Facet Summary'
+facets:
+  authored_on:
+    checked: true
+    label: Created
+    separator: ', '
+    weight: 0
+    show_count: false
+  content_type_grid:
+    checked: true
+    label: 'Content type'
+    separator: ', '
+    weight: 0
+    show_count: false
+  genre_grid:
+    checked: true
+    label: Genre
+    separator: ', '
+    weight: 0
+    show_count: false
+  geographic_subject_grid:
+    checked: true
+    label: 'Geographic Subject'
+    separator: ', '
+    weight: 0
+    show_count: false
+  member_of_grid_:
+    checked: true
+    label: 'Member of'
+    separator: ', '
+    weight: 0
+    show_count: false
+  model_grid_:
+    checked: true
+    label: Model
+    separator: ', '
+    weight: 0
+    show_count: false
+  resource_type_grid:
+    checked: true
+    label: 'Resource Type'
+    separator: ', '
+    weight: 0
+    show_count: false
+  subject_grid:
+    checked: true
+    label: Subject
+    separator: ', '
+    weight: 0
+    show_count: false
+facet_source_id: 'search_api:views_page__solr_search_content__page_1'
+processor_configs:
+  hide_when_not_rendered:
+    processor_id: hide_when_not_rendered
+    weights:
+      build: '45'
+    settings: {  }

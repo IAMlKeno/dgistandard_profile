@@ -1,0 +1,5 @@
+langcode: en
+status: true
+dependencies: {  }
+id: collection_facets_grid
+label: 'Collection Facets Grid'

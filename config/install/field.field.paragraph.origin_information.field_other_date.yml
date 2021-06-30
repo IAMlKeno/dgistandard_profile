@@ -1,0 +1,25 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_other_date
+    - paragraphs.paragraphs_type.origin_information
+  module:
+    - controlled_access_terms
+    - custom_add_another
+third_party_settings:
+  custom_add_another:
+    custom_add_another: ''
+    custom_remove: ''
+id: paragraph.origin_information.field_other_date
+field_name: field_other_date
+entity_type: paragraph
+bundle: origin_information
+label: 'Other Date'
+description: 'A date that does not fall into another category but is important to record.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: edtf

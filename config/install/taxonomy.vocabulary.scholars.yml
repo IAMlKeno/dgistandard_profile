@@ -1,0 +1,7 @@
+langcode: en
+status: true
+dependencies: {  }
+name: Scholars
+vid: scholars
+description: 'Creators and contributors of scholarly works.'
+weight: 0

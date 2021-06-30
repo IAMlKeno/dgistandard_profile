@@ -1,0 +1,30 @@
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - dgi_i8_helper_base_taxonomies
+id: degree_levels
+class: null
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - dgi_taxonomies
+migration_group: islandora
+label: 'Degree Levels'
+source:
+  plugin: csv
+  header_row_count: 1
+  track_changes: true
+  keys:
+    id:
+      type: integer
+  path: modules/contrib/dgi_i8_helper/modules/dgi_i8_helper_base_taxonomies/migrate/degree_levels.csv
+process:
+  name: name
+  description: description
+destination:
+  plugin: 'entity:taxonomy_term'
+  default_bundle: degree_levels
+migration_dependencies:
+  required: {  }

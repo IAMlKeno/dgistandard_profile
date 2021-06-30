@@ -1,0 +1,19 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - content_sync_helper
+id: export_entity
+label: 'Export entity'
+type: entity
+plugin: content_sync_helper_entity_export
+configuration:
+  label: 'Export entity'
+  id: export_entity
+  plugin: content_sync_helper_entity_export
+  type: entity
+  files: none
+  include-dependencies: 1
+  entity-types: ''
+  uuids: ''
+  actions: ''

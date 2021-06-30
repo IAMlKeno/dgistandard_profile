@@ -1,0 +1,7 @@
+langcode: en
+status: true
+dependencies: {  }
+id: contribute
+label: Contribute
+description: 'The contribute portion of the footer in the DGI Footer Menu Block.'
+locked: false

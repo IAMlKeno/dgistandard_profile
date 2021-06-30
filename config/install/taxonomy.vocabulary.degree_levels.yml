@@ -1,0 +1,7 @@
+langcode: en
+status: true
+dependencies: {  }
+name: 'Degree Levels'
+vid: degree_levels
+description: 'Controlled vocabulary for setting Thesis Degree Level'
+weight: 0

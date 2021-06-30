@@ -1,0 +1,13 @@
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - dgi_i8_helper
+  module:
+    - dgi_i8_helper
+id: recursive_delete_node
+label: 'Delete Node, Attached Media and Files'
+type: node
+plugin: recursive_delete_node
+configuration: {  }

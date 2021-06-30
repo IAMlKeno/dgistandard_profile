@@ -1,0 +1,21 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: respository_title
+label: 'Respository Title'
+type: 'canonical_entities:node'
+pattern: '[node:title]'
+selection_criteria:
+  9e651de4-f899-4b51-83c3-c57d919a2000:
+    id: node_type
+    bundles:
+      islandora_object: islandora_object
+    negate: false
+    context_mapping:
+      node: node
+    uuid: 9e651de4-f899-4b51-83c3-c57d919a2000
+selection_logic: and
+weight: -5
+relationships: {  }

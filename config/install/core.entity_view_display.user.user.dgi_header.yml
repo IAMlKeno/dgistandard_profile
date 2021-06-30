@@ -1,0 +1,29 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.user.dgi_header
+    - field.field.user.user.user_picture
+    - image.style.dgi_header_bubble
+  module:
+    - image
+    - user
+id: user.user.dgi_header
+targetEntityType: user
+bundle: user
+mode: dgi_header
+content:
+  user_picture:
+    type: image
+    weight: 0
+    region: content
+    settings:
+      image_style: dgi_header_bubble
+      image_link: ''
+    third_party_settings: {  }
+    label: hidden
+hidden:
+  addtoany: true
+  langcode: true
+  member_for: true
+  search_api_excerpt: true

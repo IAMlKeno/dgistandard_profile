@@ -1,0 +1,7 @@
+langcode: en
+status: true
+dependencies: {  }
+name: 'Publication Status'
+vid: publication_status
+description: 'SPAR Ontology publication status properties. See https://sparontologies.github.io/pso/current/pso.html.'
+weight: 0

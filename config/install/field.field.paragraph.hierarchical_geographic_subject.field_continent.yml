@@ -1,0 +1,24 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_continent
+    - paragraphs.paragraphs_type.hierarchical_geographic_subject
+  module:
+    - custom_add_another
+third_party_settings:
+  custom_add_another:
+    custom_add_another: ''
+    custom_remove: ''
+id: paragraph.hierarchical_geographic_subject.field_continent
+field_name: field_continent
+entity_type: paragraph
+bundle: hierarchical_geographic_subject
+label: Continent
+description: 'Large land mass considered to be a continent such as Asia, Africa, Europe, North America, South America, and Australia.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

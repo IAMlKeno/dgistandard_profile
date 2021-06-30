@@ -1,0 +1,27 @@
+langcode: en
+status: true
+dependencies: {  }
+id: authenticated
+label: 'Authenticated user'
+weight: -9
+is_admin: false
+permissions:
+  - 'access comments'
+  - 'access content'
+  - 'access shortcuts'
+  - 'access site-wide contact form'
+  - 'access sitemap'
+  - 'create field_display_block'
+  - 'display eu cookie compliance popup'
+  - 'edit field_display_block'
+  - 'edit own field_display_block'
+  - 'execute graphql requests'
+  - 'post comments'
+  - 'search content'
+  - 'skip comment approval'
+  - 'use search autocomplete'
+  - 'use text format restricted_html'
+  - 'view field_display_block'
+  - 'view media'
+  - 'view own field_display_block'
+  - 'view the administration theme'

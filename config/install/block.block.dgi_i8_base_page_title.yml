@@ -1,0 +1,24 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - dgi_i8_base
+id: dgi_i8_base_page_title
+theme: dgi_i8_base
+region: content
+weight: -33
+provider: null
+plugin: page_title_block
+settings:
+  id: page_title_block
+  label: 'Page title'
+  provider: core
+  label_display: '0'
+visibility:
+  request_path:
+    id: request_path
+    pages: "/node/*\r\n/user/*\r\n<front>\r\n/solr-search/*"
+    negate: true
+    context_mapping: {  }

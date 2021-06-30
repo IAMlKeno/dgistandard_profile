@@ -1,0 +1,7 @@
+langcode: en
+status: true
+dependencies: {  }
+id: footer-menu-column-3
+label: 'Footer Menu Column 3'
+description: 'Right-most column of menu links in the footer.'
+locked: false

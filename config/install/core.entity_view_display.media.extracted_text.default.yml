@@ -1,0 +1,44 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.media.extracted_text.field_edited_text
+    - field.field.media.extracted_text.field_media_file
+    - field.field.media.extracted_text.field_media_of
+    - field.field.media.extracted_text.field_media_use
+    - field.field.media.extracted_text.field_mime_type
+    - media.type.extracted_text
+  module:
+    - file
+    - text
+id: media.extracted_text.default
+targetEntityType: media
+bundle: extracted_text
+mode: default
+content:
+  field_edited_text:
+    type: text_default
+    weight: 1
+    region: content
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+  field_media_file:
+    type: file_default
+    weight: 0
+    region: content
+    label: above
+    settings:
+      use_description_as_link_text: true
+    third_party_settings: {  }
+hidden:
+  addtoany: true
+  created: true
+  field_media_of: true
+  field_media_use: true
+  field_mime_type: true
+  langcode: true
+  name: true
+  search_api_excerpt: true
+  thumbnail: true
+  uid: true

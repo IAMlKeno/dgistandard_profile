@@ -1,0 +1,7 @@
+langcode: en
+status: true
+dependencies: {  }
+name: 'DCMI Types'
+vid: dcmi_types
+description: 'See https://dublincore.org/specifications/dublin-core/dcmi-type-vocabulary/'
+weight: 0

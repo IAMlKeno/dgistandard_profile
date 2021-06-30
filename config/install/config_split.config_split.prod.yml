@@ -1,0 +1,15 @@
+langcode: en
+status: true
+dependencies: {  }
+id: prod
+label: Prod
+description: 'Modules to and settings for production envs.'
+folder: /opt/www/d8_configs/default/splits/prod
+module: {  }
+theme: {  }
+blacklist: {  }
+graylist:
+  - system.performance
+graylist_dependents: true
+graylist_skip_equal: true
+weight: 0

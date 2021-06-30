@@ -1,0 +1,112 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.hierarchical_geographic_subject.field_area
+    - field.field.paragraph.hierarchical_geographic_subject.field_city
+    - field.field.paragraph.hierarchical_geographic_subject.field_city_section
+    - field.field.paragraph.hierarchical_geographic_subject.field_continent
+    - field.field.paragraph.hierarchical_geographic_subject.field_country
+    - field.field.paragraph.hierarchical_geographic_subject.field_county
+    - field.field.paragraph.hierarchical_geographic_subject.field_extraterrestrial_area
+    - field.field.paragraph.hierarchical_geographic_subject.field_island
+    - field.field.paragraph.hierarchical_geographic_subject.field_region
+    - field.field.paragraph.hierarchical_geographic_subject.field_state
+    - field.field.paragraph.hierarchical_geographic_subject.field_territory
+    - paragraphs.paragraphs_type.hierarchical_geographic_subject
+id: paragraph.hierarchical_geographic_subject.default
+targetEntityType: paragraph
+bundle: hierarchical_geographic_subject
+mode: default
+content:
+  field_area:
+    weight: 10
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_city:
+    weight: 7
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_city_section:
+    weight: 8
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_continent:
+    weight: 1
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_country:
+    weight: 2
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_county:
+    weight: 6
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_extraterrestrial_area:
+    weight: 11
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_island:
+    weight: 9
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_region:
+    weight: 3
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_state:
+    weight: 4
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_territory:
+    weight: 5
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+hidden:
+  created: true
+  status: true

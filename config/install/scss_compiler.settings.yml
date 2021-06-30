@@ -1,0 +1,7 @@
+cache: 0
+sourcemaps: 1
+output_format: expanded
+check_modify_time: 0
+node_modules_path: ''
+plugins:
+  scss: scss_compiler_scssphp

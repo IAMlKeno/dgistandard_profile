@@ -1,0 +1,49 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.related_item.field_related_item_extent
+    - field.field.paragraph.related_item.field_relationship_type
+    - field.field.paragraph.related_item.field_title_plain
+    - field.field.paragraph.related_item.field_url
+    - paragraphs.paragraphs_type.related_item
+  module:
+    - link
+id: paragraph.related_item.default
+targetEntityType: paragraph
+bundle: related_item
+mode: default
+content:
+  field_related_item_extent:
+    weight: 3
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_relationship_type:
+    weight: 0
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_title_plain:
+    weight: 1
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_url:
+    weight: 2
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+    region: content
+hidden:
+  created: true
+  status: true

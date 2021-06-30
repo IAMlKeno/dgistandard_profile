@@ -1,0 +1,4 @@
+remapped_schemes:
+  - repo-meta
+  - repo-bin
+remapped_scheme: repo-service

@@ -1,0 +1,7 @@
+langcode: en
+status: true
+dependencies: {  }
+name: 'Organizational Units'
+vid: organizational_units
+description: 'Institutes, Schools, Campuses, Departments'
+weight: 0

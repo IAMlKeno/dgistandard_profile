@@ -1,0 +1,9 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+id: media.technical_metadata
+label: 'Technical Metadata'
+targetEntityType: media
+cache: true

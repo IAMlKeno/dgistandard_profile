@@ -1,0 +1,55 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.note.field_note
+    - field.field.paragraph.note.field_note_type
+    - paragraphs.paragraphs_type.note
+  module:
+    - field_group
+    - options
+third_party_settings:
+  field_group:
+    group_note:
+      children:
+        - field_note_type
+        - field_note
+      parent_name: ''
+      weight: 20
+      format_type: field_group_table
+      region: content
+      format_settings:
+        label_visibility: '1'
+        desc: ''
+        desc_visibility: '1'
+        first_column: ''
+        second_column: ''
+        empty_label_behavior: '1'
+        empty_field_placeholder: ''
+        id: ''
+        classes: dgi-metadata-subtable
+        table_row_striping: 0
+        always_show_field_label: 0
+        always_show_field_value: 0
+      label: Note
+id: paragraph.note.default
+targetEntityType: paragraph
+bundle: note
+mode: default
+content:
+  field_note:
+    weight: 1
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+    region: content
+  field_note_type:
+    weight: 0
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
+    region: content
+hidden:
+  search_api_excerpt: true

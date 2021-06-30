@@ -1,0 +1,27 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_url
+    - paragraphs.paragraphs_type.related_item
+  module:
+    - custom_add_another
+    - link
+third_party_settings:
+  custom_add_another:
+    custom_add_another: ''
+    custom_remove: ''
+id: paragraph.related_item.field_url
+field_name: field_url
+entity_type: paragraph
+bundle: related_item
+label: URL
+description: 'The url of the related item, preferably a persistent identifier such as a DOI, Handle, ARK, etc. If unavailable a url will suffice.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 17
+  title: 1
+field_type: link

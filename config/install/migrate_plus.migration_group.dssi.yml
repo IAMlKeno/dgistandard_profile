@@ -1,0 +1,23 @@
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - dgi_standard_spreadsheet_ingest
+id: dssi
+label: 'CSV to DGI Standard Islandora Repository Object nodes'
+description: 'Mapping from CSV to I8.'
+source_type: CSV
+module: null
+shared_configuration:
+  source:
+    plugin: spreadsheet
+    worksheet: nada
+    track_changes: true
+    file: modules/contrib/dgi_standard_spreadsheet_ingest/fixtures/migration_example.csv
+    header_row: 1
+    keys:
+      ID:
+        type: integer
+  migration_tags:
+    - isi_template

@@ -1,0 +1,35 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - content_sync_helper
+    - islandora
+  theme:
+    - dgi_i8_base
+id: dgi_i8_base_local_tasks
+theme: dgi_i8_base
+region: content
+weight: -31
+provider: null
+plugin: local_tasks_block
+settings:
+  id: local_tasks_block
+  label: Tabs
+  provider: core
+  label_display: '0'
+  primary: true
+  secondary: true
+visibility:
+  content_sync_helper_media_parent_node_has_type:
+    id: content_sync_helper_media_parent_node_has_type
+    bundles:
+      islandora_object: islandora_object
+    negate: true
+    context_mapping:
+      media: '@islandora.media_route_context_provider:media'
+  islandora_entity_bundle:
+    id: islandora_entity_bundle
+    bundles:
+      islandora_object: islandora_object
+    negate: true
+    context_mapping: {  }

@@ -1,0 +1,29 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.note.field_note
+    - field.field.paragraph.note.field_note_type
+    - paragraphs.paragraphs_type.note
+id: paragraph.note.default
+targetEntityType: paragraph
+bundle: note
+mode: default
+content:
+  field_note:
+    weight: 1
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textarea
+    region: content
+  field_note_type:
+    weight: 0
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+hidden:
+  created: true
+  status: true

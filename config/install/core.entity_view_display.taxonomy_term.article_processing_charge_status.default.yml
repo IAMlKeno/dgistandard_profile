@@ -1,0 +1,45 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.article_processing_charge_status.field_label_spar_pso
+    - field.field.taxonomy_term.article_processing_charge_status.field_uri_spar_pso
+    - taxonomy.vocabulary.article_processing_charge_status
+  module:
+    - link
+    - text
+id: taxonomy_term.article_processing_charge_status.default
+targetEntityType: taxonomy_term
+bundle: article_processing_charge_status
+mode: default
+content:
+  description:
+    label: hidden
+    type: text_default
+    weight: 1
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_label_spar_pso:
+    weight: 0
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_uri_spar_pso:
+    weight: 2
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link
+    region: content
+hidden:
+  langcode: true
+  search_api_excerpt: true

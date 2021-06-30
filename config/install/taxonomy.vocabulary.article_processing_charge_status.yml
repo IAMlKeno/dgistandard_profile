@@ -1,0 +1,7 @@
+langcode: en
+status: true
+dependencies: {  }
+name: 'Article Processing Charge Status'
+vid: article_processing_charge_status
+description: 'Subset of PSO Ontology used for APC. See https://sparontologies.github.io/pso/current/pso.html#d4e289.'
+weight: 0

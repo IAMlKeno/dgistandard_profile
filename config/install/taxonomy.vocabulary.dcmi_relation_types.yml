@@ -1,0 +1,7 @@
+langcode: en
+status: true
+dependencies: {  }
+name: 'DCMI Relation Types'
+vid: dcmi_relation_types
+description: 'See https://www.dublincore.org/specifications/dublin-core/rdf-relation-types/.'
+weight: 0

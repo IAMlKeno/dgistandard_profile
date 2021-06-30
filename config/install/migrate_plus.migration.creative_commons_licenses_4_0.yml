@@ -1,0 +1,34 @@
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - dgi_i8_helper_base_taxonomies
+id: creative_commons_licenses_4_0
+class: null
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - dgi_taxonomies
+migration_group: islandora
+label: 'Creative Commons Licenses 4.0'
+source:
+  plugin: csv
+  header_row_count: 1
+  track_changes: true
+  keys:
+    id:
+      type: integer
+  path: modules/contrib/dgi_i8_helper/modules/dgi_i8_helper_base_taxonomies/migrate/creative_commons_licenses_4_0.csv
+process:
+  name: name
+  description: description
+  field_cc4_summary: field_cc4_summary
+  field_url:
+    plugin: urlencode
+    source: field_url
+destination:
+  plugin: 'entity:taxonomy_term'
+  default_bundle: creative_commons_licenses_4_0
+migration_dependencies:
+  required: {  }
